@@ -19,7 +19,7 @@ jobs:
 
       - name: Test
         run: |
-          echo Running tests
+          echo Running testsh
           # Simule un test pour le fichier HTML
           if grep -q "Hello World" index.html; then
             echo "Test Passed"
