@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      
+      - name: Build
+        run: |
+          echo Building the HTML project
+          # Ajoutez ici vos commandes de build si nécessaire
+
+      - name: Test
+        run: |
+          echo Running tests
+          # Simule un test pour le fichier HTML
+          if grep -q "Hello World" index.html; then
+            echo "Test Passed"
+            exit 0
+          else
+            echo "Test Failed"
+            exit 1
+          fi
