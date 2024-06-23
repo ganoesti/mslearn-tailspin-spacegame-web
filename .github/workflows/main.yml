@@ -1,16 +1,31 @@
-name: Test Project
-on: push
+name: CI
+
+on:
+  push:
+ 
+      - main
+
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Get code
-        uses: actions/checkout@v3
-      - name: Install Node
-        uses: actions/setup-node@v3
-        with: 
-          node-version: 16.8
-      - name: Install dependencies
-        run : npm ci
-      - name: Run tests
-        run : npm test
+      - name: Checkout code
+        uses: actions/checkout@v2
+      
+      - name: Build
+        run: |
+          echo Building the HTML project
+          # Ajoutez ici vos commandes de build si nécessaire
+
+      - name: Test
+        run: |
+          echo Running testsh
+          # Simule un test pour le fichier HTML
+          if grep -q "Hello World" index.html; then
+            echo "Test Passed"
+            exit 0
+          else
+            echo "Test Failed"
+            exit 1
+          fi
+
