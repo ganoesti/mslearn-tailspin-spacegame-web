@@ -1,3 +1,29 @@
-pool: MyAgentPool
-steps:
-- bash: echo hello world
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+stages:
+- stage: Build
+  jobs:
+  - job: Build
+    steps:
+    - script: echo Building the HTML project
+      displayName: 'Run build script'
+
+- stage: Test
+  jobs:
+  - job: Test
+    steps:
+    - script: |
+        echo Running tests
+        # Simulate a test for the HTML file
+        if grep -q "Hello World" index.html; then
+          echo "Test Passed"
+          exit 0
+        else
+          echo "Test Failed"
+          exit 1
+        fi
+      displayName: 'Run tests'
